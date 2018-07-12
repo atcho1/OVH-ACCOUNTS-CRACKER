@@ -6,7 +6,7 @@ PROGRAMMED WITH PYTHON2.
 
 PROGRAMMED BY [ S I R . B U G S ].
 
-$ IMPORTED LIBS (NEEDS TO INSTALL) [upgrade pip/selenium].
+IMPORTED LIBS (NEEDS TO INSTALL) [upgrade pip/selenium].
 
 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
