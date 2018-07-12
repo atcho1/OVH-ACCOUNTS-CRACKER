@@ -46,7 +46,7 @@ list = raw_input('{} {}[X] ENTER YOUR LIST PATH X> '.format(cy, cy))
 count = 0
 # ---------------------------------- ## ---------------------------------- ## ---------------------------------- #
 file = open(list,'r').readlines()
-driver = webdriver.PhantomJS("C:\\Selenium\\Phantom\\phantomjs-2.1.1-windows\\phantomjs-2.1.1-windows\\bin\\phantomjs.exe")
+driver = webdriver.PhantomJS("C:\\Selenium\\phantomjs-2.1.1-windows\\bin\\phantomjs.exe")
 #driver = webdriver.Chrome("C:\\Selenium\\Chrome\\chromedriver.exe")
 for line in file:
 	count = count + 1
