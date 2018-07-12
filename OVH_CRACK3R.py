@@ -47,7 +47,7 @@ count = 0
 # ---------------------------------- ## ---------------------------------- ## ---------------------------------- #
 file = open(list,'r').readlines()
 driver = webdriver.PhantomJS("C:\\Selenium\\phantomjs-2.1.1-windows\\bin\\phantomjs.exe")
-#driver = webdriver.Chrome("C:\\Selenium\\Chrome\\chromedriver.exe")
+# //driver = webdriver.Chrome("C:\\Selenium\\Chrome\\chromedriver.exe")
 for line in file:
 	count = count + 1
 	line = line.strip()
